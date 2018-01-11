@@ -1,0 +1,93 @@
+{% load staticfiles %}
+{% load leaflet_tags %}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,600" rel="stylesheet">    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'map/main.css' %}">
+    <script src="{% static 'map/smoothmarkerbouncing.js' %}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+
+
+
+    </script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $( function() {
+            $( "#accordion" ).accordion({
+                collapsible: true,
+                heightStyle: "content"
+                });
+               });
+    </script>
+    <title>
+        Kina Opery Teatry
+    </title>
+</head>
+<body>
+<header class="header clearfix">
+    <p id="date"></p>
+       <hr class="logo_hr">
+    <div id="logo_container">
+        <h1 class="flux">Kina Opery Teatry</h1>
+        <hr class="logo_hr">
+        <p>
+            Kultury nie uprawia się zrywami, wtedy, kiedy ktoś orzeknie, że „już można”. <br>Fundamentem kultury jest
+            uporczywość wysiłku twórczego i żaden internet tego nie zmieni ani od tego nie uwolni.
+            <br>-Barbara Toruńczyk-
+        </p>
+         <hr/>
+    </div>
+</header>
+<div class="jumbotron_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div id="accordion">
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div id="map">
+                    {% leaflet_map "map" callback="window.map_init_basic" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+   <hr class="fat hr">
+<footer>
+    <center>
+        <p>tcpl & jrk 2017</p>
+    </center>
+
+</footer>
+
+<script src="{% static 'map/main_js.js' %}"></script>
+<script type="text/javascript">
+         var months = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca',
+             'sierpnia', 'września', 'pazdziernika', 'listopada', 'grudnia'];
+var today = new Date();
+document.getElementById("date").innerHTML = 'Kraków, '+ " " + today.getDate() + " " +  months[today.getMonth()]+ " " + today.getFullYear();
+
+
+
+</script>
+</html>
